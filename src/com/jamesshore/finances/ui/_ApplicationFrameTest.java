@@ -1,14 +1,19 @@
 package com.jamesshore.finances.ui;
 
-import static org.junit.Assert.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.lang.reflect.*;
-import java.util.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import javax.swing.*;
-import javax.swing.table.*;
-import org.junit.*;
+import javax.swing.table.TableModel;
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
+
+import static org.junit.Assert.*;
 
 public class _ApplicationFrameTest {
 
@@ -22,7 +27,7 @@ public class _ApplicationFrameTest {
 
 	@Before
 	public void setup() throws Exception {
-		mockModel = new __ApplicationModelSpy();
+		mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
 		frame = new ApplicationFrame(mockModel);
 		menuBar = frame.getJMenuBar();
 		fileMenu = menuBar.getMenu(0);
@@ -103,7 +108,9 @@ public class _ApplicationFrameTest {
 
 		assertMenuItemEquals(newMenuItem, "New", KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.META_MASK));
 		assertMenuItemEquals(closeMenuItem, "Close", KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.META_MASK));
-		assertMenuItemEquals(saveAsMenuItem, "Save As...", KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK | InputEvent.META_MASK));
+		assertMenuItemEquals(
+				saveAsMenuItem, "Save As...", KeyStroke.getKeyStroke(
+				KeyEvent.VK_S, InputEvent.SHIFT_MASK | InputEvent.META_MASK));
 	}
 
 	private void assertMenuItemEquals(JMenuItem menuItem, String expectedName, KeyStroke expectedAccelerator) {

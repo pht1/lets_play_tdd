@@ -15,7 +15,7 @@ public class _ApplicationModelTest {
 
 	@Before
 	public void setup() {
-		modelCommand = new ApplicationModelCommand();
+		modelCommand = new ApplicationModelCommand(new ApplicationModelQuery());
 	}
 
 	@Test

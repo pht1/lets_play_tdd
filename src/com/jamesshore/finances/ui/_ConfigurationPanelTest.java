@@ -1,11 +1,14 @@
 package com.jamesshore.finances.ui;
 
-import static org.junit.Assert.*;
-import java.awt.*;
+import com.jamesshore.finances.domain.ValidDollars;
+import net.miginfocom.swing.MigLayout;
+import org.junit.Before;
+import org.junit.Test;
+
 import javax.swing.*;
-import net.miginfocom.swing.*;
-import org.junit.*;
-import com.jamesshore.finances.domain.*;
+import java.awt.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class _ConfigurationPanelTest {
 
@@ -26,7 +29,7 @@ public class _ConfigurationPanelTest {
 
 	@Before
 	public void setUp() {
-		modelCommand = new ApplicationModelCommand();
+		modelCommand = new ApplicationModelCommand(new ApplicationModelQuery());
 		panel = new ConfigurationPanel(modelCommand);
 	}
 
@@ -60,7 +63,7 @@ public class _ConfigurationPanelTest {
 
 	@Test
 	public void startingBalanceFieldUpdatesApplicationModel() {
-		__ApplicationModelSpy mockModel = new __ApplicationModelSpy();
+		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
 		panel = new ConfigurationPanel(mockModel);
 
 		startingBalanceField().setText("668");
@@ -69,7 +72,7 @@ public class _ConfigurationPanelTest {
 
 	@Test
 	public void costBasisFieldUpdatesApplicationModel() {
-		__ApplicationModelSpy mockModel = new __ApplicationModelSpy();
+		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
 		panel = new ConfigurationPanel(mockModel);
 
 		costBasisField().setText("670");
@@ -78,7 +81,7 @@ public class _ConfigurationPanelTest {
 
 	@Test
 	public void yearlySpendingFieldUpdatesApplicationModel() {
-		__ApplicationModelSpy mockModel = new __ApplicationModelSpy();
+		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
 		panel = new ConfigurationPanel(mockModel);
 
 		yearlySpendingField().setText("672");

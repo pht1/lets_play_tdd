@@ -1,13 +1,18 @@
 package com.jamesshore.finances.ui;
 
-import java.io.*;
-import com.jamesshore.finances.domain.*;
+import com.jamesshore.finances.domain.Dollars;
+
+import java.io.File;
 
 public class __ApplicationModelSpy extends ApplicationModelCommand {
 	public Dollars setStartingBalanceCalledWith;
 	public Dollars setStartingCostBasisCalledWith;
 	public Dollars setYearlySpendingCalledWith;
 	public File saveCalledWith;
+
+	public __ApplicationModelSpy(ApplicationModelQuery applicationModelQuery) {
+		super(applicationModelQuery);
+	}
 
 	@Override
 	public void setStartingBalance(Dollars startingBalance) {

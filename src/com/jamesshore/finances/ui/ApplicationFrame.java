@@ -1,9 +1,12 @@
 package com.jamesshore.finances.ui;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.io.File;
 
 public class ApplicationFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -16,7 +19,7 @@ public class ApplicationFrame extends JFrame {
 	private FileDialog saveAsDialog;
 
 	public static void newWindow() {
-		new ApplicationFrame(new ApplicationModelCommand()).setVisible(true);
+		new ApplicationFrame(new ApplicationModelCommand(new ApplicationModelQuery())).setVisible(true);
 	}
 
 	public ApplicationFrame(ApplicationModelCommand applicationModelCommand) {

@@ -6,9 +6,13 @@ import java.io.File;
 
 public class ApplicationModelCommand {
 
-	private ApplicationModelQuery applicationModelQuery = new ApplicationModelQuery();
+	private final ApplicationModelQuery applicationModelQuery;
+	private final StockMarketTableModel stockMarketTableModel;
 
-	private StockMarketTableModel stockMarketTableModel = new StockMarketTableModel(applicationModelQuery.stockMarketProjection());
+	public ApplicationModelCommand(ApplicationModelQuery applicationModelQuery) {
+		this.applicationModelQuery = applicationModelQuery;
+		stockMarketTableModel = new StockMarketTableModel(applicationModelQuery.stockMarketProjection());
+	}
 
 	public StockMarketTableModel stockMarketTableModel() {
 		return stockMarketTableModel;
