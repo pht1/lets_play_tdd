@@ -17,14 +17,17 @@ public class ApplicationFrame extends JFrame {
 
 	private ApplicationModelCommand modelCommand;
 	private FileDialog saveAsDialog;
+	private ApplicationModelQuery modelQuery;
 
 	public static void newWindow() {
-		new ApplicationFrame(new ApplicationModelCommand(new ApplicationModelQuery())).setVisible(true);
+		ApplicationModelQuery modelQuery = new ApplicationModelQuery();
+		new ApplicationFrame(new ApplicationModelCommand(modelQuery), modelQuery).setVisible(true);
 	}
 
-	public ApplicationFrame(ApplicationModelCommand applicationModelCommand) {
+	public ApplicationFrame(ApplicationModelCommand applicationModelCommand, ApplicationModelQuery modelQuery) {
 		super(TITLE);
 		this.modelCommand = applicationModelCommand;
+		this.modelQuery = modelQuery;
 		configureWindow();
 		addComponents();
 	}
@@ -50,7 +53,7 @@ public class ApplicationFrame extends JFrame {
 	}
 
 	private ConfigurationPanel configurationPanel() {
-		return new ConfigurationPanel(modelCommand, new ApplicationModelQuery());
+		return new ConfigurationPanel(modelCommand, modelQuery);
 	}
 
 	private JMenuBar menuBar() {
