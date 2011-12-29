@@ -1,9 +1,10 @@
 package com.jamesshore.finances.ui;
 
-import java.io.*;
 import com.jamesshore.finances.domain.*;
 
-public class ApplicationModel {
+import java.io.File;
+
+public class ApplicationModelQuery {
 
 	public static final Year DEFAULT_STARTING_YEAR = new Year(2010);
 	public static final Year DEFAULT_ENDING_YEAR = new Year(2050);
