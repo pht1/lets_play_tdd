@@ -8,10 +8,12 @@ import javax.swing.*;
 public class ConfigurationPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final ApplicationModelCommand applicationModelCommand;
-	private ApplicationModelQuery applicationModelQuery= new ApplicationModelQuery(); //TODO DI
+	private final ApplicationModelQuery applicationModelQuery;
 
-	public ConfigurationPanel(ApplicationModelCommand applicationModelCommand) {
+	public ConfigurationPanel(
+			ApplicationModelCommand applicationModelCommand, ApplicationModelQuery applicationModelQuery) {
 		this.applicationModelCommand = applicationModelCommand;
+		this.applicationModelQuery = applicationModelQuery;
 		addComponents();
 	}
 

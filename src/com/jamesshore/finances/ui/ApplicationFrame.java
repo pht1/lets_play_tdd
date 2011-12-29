@@ -50,7 +50,7 @@ public class ApplicationFrame extends JFrame {
 	}
 
 	private ConfigurationPanel configurationPanel() {
-		return new ConfigurationPanel(modelCommand);
+		return new ConfigurationPanel(modelCommand, new ApplicationModelQuery());
 	}
 
 	private JMenuBar menuBar() {

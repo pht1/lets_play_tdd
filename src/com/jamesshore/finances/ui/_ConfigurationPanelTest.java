@@ -31,7 +31,7 @@ public class _ConfigurationPanelTest {
 	public void setUp() {
 		modelQuery = new ApplicationModelQuery();
 		ApplicationModelCommand modelCommand = new ApplicationModelCommand(modelQuery);
-		panel = new ConfigurationPanel(modelCommand);
+		panel = new ConfigurationPanel(modelCommand, modelQuery);
 	}
 
 	@Test
@@ -65,7 +65,7 @@ public class _ConfigurationPanelTest {
 	@Test
 	public void startingBalanceFieldUpdatesApplicationModel() {
 		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		panel = new ConfigurationPanel(mockModel);
+		panel = new ConfigurationPanel(mockModel, modelQuery);
 
 		startingBalanceField().setText("668");
 		assertEquals("applicationModel should be updated", ValidDollars.create(668), mockModel.setStartingBalanceCalledWith);
@@ -74,7 +74,7 @@ public class _ConfigurationPanelTest {
 	@Test
 	public void costBasisFieldUpdatesApplicationModel() {
 		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		panel = new ConfigurationPanel(mockModel);
+		panel = new ConfigurationPanel(mockModel, modelQuery);
 
 		costBasisField().setText("670");
 		assertEquals("applicationModel should be updated", ValidDollars.create(670), mockModel.setStartingCostBasisCalledWith);
@@ -83,7 +83,7 @@ public class _ConfigurationPanelTest {
 	@Test
 	public void yearlySpendingFieldUpdatesApplicationModel() {
 		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		panel = new ConfigurationPanel(mockModel);
+		panel = new ConfigurationPanel(mockModel, modelQuery);
 
 		yearlySpendingField().setText("672");
 		assertEquals("applicationModel should be updated", ValidDollars.create(672), mockModel.setYearlySpendingCalledWith);
