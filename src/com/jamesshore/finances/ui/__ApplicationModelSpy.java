@@ -3,7 +3,7 @@ package com.jamesshore.finances.ui;
 import java.io.*;
 import com.jamesshore.finances.domain.*;
 
-public class __ApplicationModelSpy extends ApplicationModel {
+public class __ApplicationModelSpy extends ApplicationModelCommand {
 	public Dollars setStartingBalanceCalledWith;
 	public Dollars setStartingCostBasisCalledWith;
 	public Dollars setYearlySpendingCalledWith;

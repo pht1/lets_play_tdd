@@ -12,16 +12,16 @@ public class ApplicationFrame extends JFrame {
 	public static final Point INITIAL_POSITION = new Point(400, 300);
 	public static final Dimension INITIAL_SIZE = new Dimension(900, 400);
 
-	private ApplicationModel model;
+	private ApplicationModelCommand modelCommand;
 	private FileDialog saveAsDialog;
 
 	public static void newWindow() {
-		new ApplicationFrame(new ApplicationModel()).setVisible(true);
+		new ApplicationFrame(new ApplicationModelCommand()).setVisible(true);
 	}
 
-	public ApplicationFrame(ApplicationModel applicationModel) {
+	public ApplicationFrame(ApplicationModelCommand applicationModelCommand) {
 		super(TITLE);
-		this.model = applicationModel;
+		this.modelCommand = applicationModelCommand;
 		configureWindow();
 		addComponents();
 	}
@@ -43,11 +43,11 @@ public class ApplicationFrame extends JFrame {
 	}
 
 	private Component forecastTable() {
-		return new JScrollPane(new ForecastTable(model.stockMarketTableModel()));
+		return new JScrollPane(new ForecastTable(modelCommand.stockMarketTableModel()));
 	}
 
 	private ConfigurationPanel configurationPanel() {
-		return new ConfigurationPanel(model);
+		return new ConfigurationPanel(modelCommand);
 	}
 
 	private JMenuBar menuBar() {
@@ -93,7 +93,7 @@ public class ApplicationFrame extends JFrame {
 		String directory = saveAsDialog.getDirectory();
 		String file = saveAsDialog.getFile();
 
-		if (file != null) model.save(new File(directory, file));
+		if (file != null) modelCommand.save(new File(directory, file));
 	}
 
 	private JMenuItem menuItem(String name, KeyStroke accelerator, ActionListener action) {

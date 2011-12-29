@@ -10,7 +10,7 @@ import com.jamesshore.finances.domain.*;
 public class _ConfigurationPanelTest {
 
 	private ConfigurationPanel panel;
-	private ApplicationModel model;
+	private ApplicationModelCommand modelCommand;
 
 	private DollarsTextField startingBalanceField() {
 		return (DollarsTextField)panel.getComponent(1);
@@ -26,8 +26,8 @@ public class _ConfigurationPanelTest {
 
 	@Before
 	public void setUp() {
-		model = new ApplicationModel();
-		panel = new ConfigurationPanel(model);
+		modelCommand = new ApplicationModelCommand();
+		panel = new ConfigurationPanel(modelCommand);
 	}
 
 	@Test
@@ -53,9 +53,9 @@ public class _ConfigurationPanelTest {
 
 	@Test
 	public void fieldsInitializeToModelValue() {
-		assertEquals("starting balance field text", model.startingBalance(), startingBalanceField().getDollars());
-		assertEquals("cost basis field text", model.startingCostBasis(), costBasisField().getDollars());
-		assertEquals("yearly spending field text", model.yearlySpending(), yearlySpendingField().getDollars());
+		assertEquals("starting balance field text", modelCommand.startingBalance(), startingBalanceField().getDollars());
+		assertEquals("cost basis field text", modelCommand.startingCostBasis(), costBasisField().getDollars());
+		assertEquals("yearly spending field text", modelCommand.yearlySpending(), yearlySpendingField().getDollars());
 	}
 
 	@Test

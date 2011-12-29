@@ -6,10 +6,10 @@ import com.jamesshore.finances.ui.DollarsTextField.ChangeListener;
 
 public class ConfigurationPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private final ApplicationModel applicationModel;
+	private final ApplicationModelCommand applicationModelCommand;
 
-	public ConfigurationPanel(ApplicationModel applicationModel) {
-		this.applicationModel = applicationModel;
+	public ConfigurationPanel(ApplicationModelCommand applicationModelCommand) {
+		this.applicationModelCommand = applicationModelCommand;
 		addComponents();
 	}
 
@@ -26,30 +26,30 @@ public class ConfigurationPanel extends JPanel {
 	}
 
 	public DollarsTextField startingBalanceField() {
-		final DollarsTextField field = new DollarsTextField(applicationModel.startingBalance());
+		final DollarsTextField field = new DollarsTextField(applicationModelCommand.startingBalance());
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
-				applicationModel.setStartingBalance(field.getDollars());
+				applicationModelCommand.setStartingBalance(field.getDollars());
 			}
 		});
 		return field;
 	}
 
 	private DollarsTextField costBasisField() {
-		final DollarsTextField field = new DollarsTextField(applicationModel.startingCostBasis());
+		final DollarsTextField field = new DollarsTextField(applicationModelCommand.startingCostBasis());
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
-				applicationModel.setStartingCostBasis(field.getDollars());
+				applicationModelCommand.setStartingCostBasis(field.getDollars());
 			}
 		});
 		return field;
 	}
 
 	private DollarsTextField yearlySpendingField() {
-		final DollarsTextField field = new DollarsTextField(applicationModel.yearlySpending());
+		final DollarsTextField field = new DollarsTextField(applicationModelCommand.yearlySpending());
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
-				applicationModel.setYearlySpending(field.getDollars());
+				applicationModelCommand.setYearlySpending(field.getDollars());
 			}
 		});
 		return field;
