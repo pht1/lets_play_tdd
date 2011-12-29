@@ -1,8 +1,13 @@
 package com.jamesshore.finances.ui;
 
-import static org.junit.Assert.*;
-import org.junit.*;
-import com.jamesshore.finances.domain.*;
+import com.jamesshore.finances.domain.StockMarketProjection;
+import com.jamesshore.finances.domain.StockMarketYear;
+import com.jamesshore.finances.domain.ValidDollars;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class _ApplicationModelTest {
 
@@ -18,12 +23,12 @@ public class _ApplicationModelTest {
 		StockMarketProjection projection = modelCommand.stockMarketTableModel().stockMarketProjection();
 
 		StockMarketYear startingYear = projection.getYearOffset(0);
-		assertEquals(ApplicationModelCommand.DEFAULT_STARTING_YEAR, startingYear.year());
-		assertEquals(ApplicationModelCommand.DEFAULT_STARTING_BALANCE, startingYear.startingBalance());
-		assertEquals(ApplicationModelCommand.DEFAULT_STARTING_COST_BASIS, startingYear.startingCostBasis());
-		assertEquals(ApplicationModelCommand.DEFAULT_GROWTH_RATE, startingYear.growthRate());
-		assertEquals(ApplicationModelCommand.DEFAULT_CAPITAL_GAINS_TAX_RATE, startingYear.capitalGainsTaxRate());
-		assertEquals(ApplicationModelCommand.DEFAULT_YEARLY_SPENDING, startingYear.totalSellOrders());
+		assertEquals(ApplicationModelQuery.DEFAULT_STARTING_YEAR, startingYear.year());
+		assertEquals(ApplicationModelQuery.DEFAULT_STARTING_BALANCE, startingYear.startingBalance());
+		assertEquals(ApplicationModelQuery.DEFAULT_STARTING_COST_BASIS, startingYear.startingCostBasis());
+		assertEquals(ApplicationModelQuery.DEFAULT_GROWTH_RATE, startingYear.growthRate());
+		assertEquals(ApplicationModelQuery.DEFAULT_CAPITAL_GAINS_TAX_RATE, startingYear.capitalGainsTaxRate());
+		assertEquals(ApplicationModelQuery.DEFAULT_YEARLY_SPENDING, startingYear.totalSellOrders());
 
 		assertEquals(41, projection.numberOfYears());
 	}

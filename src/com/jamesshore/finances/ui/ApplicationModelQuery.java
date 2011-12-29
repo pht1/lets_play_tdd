@@ -2,8 +2,6 @@ package com.jamesshore.finances.ui;
 
 import com.jamesshore.finances.domain.*;
 
-import java.io.File;
-
 public class ApplicationModelQuery {
 
 	public static final Year DEFAULT_STARTING_YEAR = new Year(2010);
@@ -22,12 +20,6 @@ public class ApplicationModelQuery {
 	private TaxRate capitalGainsTaxRate = DEFAULT_CAPITAL_GAINS_TAX_RATE;
 	private Dollars yearlySpending = DEFAULT_YEARLY_SPENDING;
 
-	private StockMarketTableModel stockMarketTableModel = new StockMarketTableModel(stockMarketProjection());
-
-	public StockMarketTableModel stockMarketTableModel() {
-		return stockMarketTableModel;
-	}
-
 	public Dollars startingBalance() {
 		return startingBalance;
 	}
@@ -42,27 +34,19 @@ public class ApplicationModelQuery {
 
 	public void setStartingBalance(Dollars startingBalance) {
 		this.startingBalance = startingBalance;
-		stockMarketTableModel.setProjection(stockMarketProjection());
 	}
 
 	public void setStartingCostBasis(Dollars startingCostBasis) {
 		this.startingCostBasis = startingCostBasis;
-		stockMarketTableModel.setProjection(stockMarketProjection());
 	}
 
 	public void setYearlySpending(Dollars yearlySpending) {
 		this.yearlySpending = yearlySpending;
-		stockMarketTableModel.setProjection(stockMarketProjection());
 	}
 
 	public StockMarketProjection stockMarketProjection() {
 		StockMarketYear firstYear = new StockMarketYear(startingYear, startingBalance, startingCostBasis, growthRate, capitalGainsTaxRate);
 		return new StockMarketProjection(firstYear, endingYear, yearlySpending);
-	}
-
-	public void save(File saveFile) {
-		System.out.println("save called: " + saveFile);
-		// TODO: finish me
 	}
 
 }
