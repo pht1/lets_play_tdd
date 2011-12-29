@@ -1,10 +1,16 @@
 package com.jamesshore.spikes.mac_laf;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.table.*;
-import com.apple.eawt.*;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+//import com.apple.eawt.*;
 
 @SuppressWarnings("unused")
 public class MacSpike extends JFrame {
