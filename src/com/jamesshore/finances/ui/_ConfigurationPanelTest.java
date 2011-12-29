@@ -4,6 +4,7 @@ import com.jamesshore.finances.domain.ValidDollars;
 import net.miginfocom.swing.MigLayout;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,29 +65,29 @@ public class _ConfigurationPanelTest {
 
 	@Test
 	public void startingBalanceFieldUpdatesApplicationModel() {
-		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		panel = new ConfigurationPanel(mockModel, modelQuery);
+		ApplicationModelCommand mockModelCommand = Mockito.mock(ApplicationModelCommand.class);
+		panel = new ConfigurationPanel(mockModelCommand, modelQuery);
 
 		startingBalanceField().setText("668");
-		assertEquals("applicationModel should be updated", ValidDollars.create(668), mockModel.setStartingBalanceCalledWith);
+		Mockito.verify(mockModelCommand).setStartingBalance(ValidDollars.create(668));
 	}
 
 	@Test
 	public void costBasisFieldUpdatesApplicationModel() {
-		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		panel = new ConfigurationPanel(mockModel, modelQuery);
+		ApplicationModelCommand mockModelCommand = Mockito.mock(ApplicationModelCommand.class);
+		panel = new ConfigurationPanel(mockModelCommand, modelQuery);
 
 		costBasisField().setText("670");
-		assertEquals("applicationModel should be updated", ValidDollars.create(670), mockModel.setStartingCostBasisCalledWith);
+		Mockito.verify(mockModelCommand).setStartingCostBasis(ValidDollars.create(670));
 	}
 
 	@Test
 	public void yearlySpendingFieldUpdatesApplicationModel() {
-		__ApplicationModelSpy mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		panel = new ConfigurationPanel(mockModel, modelQuery);
+		ApplicationModelCommand mockModelCommand = Mockito.mock(ApplicationModelCommand.class);
+		panel = new ConfigurationPanel(mockModelCommand, modelQuery);
 
 		yearlySpendingField().setText("672");
-		assertEquals("applicationModel should be updated", ValidDollars.create(672), mockModel.setYearlySpendingCalledWith);
+		Mockito.verify(mockModelCommand).setYearlySpending(ValidDollars.create(672));
 
 	}
 

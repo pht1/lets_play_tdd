@@ -38,6 +38,7 @@
     <orderEntry type="library" name="Maven: junit:junit:4.8.2" level="project" />
     <orderEntry type="library" name="Maven: com.miglayout:miglayout-swing:4.2" level="project" />
     <orderEntry type="library" name="Maven: com.miglayout:miglayout-core:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.8.5" level="project" />
   </component>
 </module>
 

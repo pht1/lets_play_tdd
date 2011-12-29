@@ -3,6 +3,7 @@ package com.jamesshore.finances.ui;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -18,7 +19,7 @@ import static org.junit.Assert.*;
 public class _ApplicationFrameTest {
 
 	private ApplicationFrame frame;
-	private __ApplicationModelSpy mockModel;
+	private ApplicationModelCommand mockModelCommand;
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
 	private JMenuItem newMenuItem;
@@ -27,8 +28,8 @@ public class _ApplicationFrameTest {
 
 	@Before
 	public void setup() throws Exception {
-		mockModel = new __ApplicationModelSpy(new ApplicationModelQuery());
-		frame = new ApplicationFrame(mockModel);
+		mockModelCommand = Mockito.mock(ApplicationModelCommand.class);
+		frame = new ApplicationFrame(mockModelCommand);
 		menuBar = frame.getJMenuBar();
 		fileMenu = menuBar.getMenu(0);
 		newMenuItem = fileMenu.getItem(0);
@@ -165,7 +166,7 @@ public class _ApplicationFrameTest {
 		saveAsDialog().setDirectory("/example");
 		saveAsDialog().setFile("filename");
 		frame.doSave();
-		assertEquals("applicationModel should be told to save", new File("/example/filename"), mockModel.saveCalledWith);
+		Mockito.verify(mockModelCommand).save(new File("/example/filename"));
 	}
 
 	@Test
@@ -173,7 +174,7 @@ public class _ApplicationFrameTest {
 		saveAsDialog().setDirectory(null);
 		saveAsDialog().setFile(null);
 		frame.doSave();
-		assertNull("applicationModel should not have been told to save", mockModel.saveCalledWith);
+		Mockito.verify(mockModelCommand, Mockito.never()).save(Mockito.<File>any());
 	}
 
 	private FileDialog saveAsDialog() {
