@@ -18,18 +18,6 @@ public class ApplicationModelCommand {
 		return stockMarketTableModel;
 	}
 
-	public Dollars startingBalance() {
-		return applicationModelQuery.startingBalance();
-	}
-
-	public Dollars startingCostBasis() {
-		return applicationModelQuery.startingCostBasis();
-	}
-
-	public Dollars yearlySpending() {
-		return applicationModelQuery.yearlySpending();
-	}
-
 	public void setStartingBalance(Dollars startingBalance) {
 		applicationModelQuery.setStartingBalance(startingBalance);
 		stockMarketTableModel.setProjection(applicationModelQuery.stockMarketProjection());

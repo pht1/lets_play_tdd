@@ -1,12 +1,14 @@
 package com.jamesshore.finances.ui;
 
-import javax.swing.*;
-import net.miginfocom.swing.*;
 import com.jamesshore.finances.ui.DollarsTextField.ChangeListener;
+import net.miginfocom.swing.MigLayout;
+
+import javax.swing.*;
 
 public class ConfigurationPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final ApplicationModelCommand applicationModelCommand;
+	private ApplicationModelQuery applicationModelQuery= new ApplicationModelQuery(); //TODO DI
 
 	public ConfigurationPanel(ApplicationModelCommand applicationModelCommand) {
 		this.applicationModelCommand = applicationModelCommand;
@@ -26,7 +28,7 @@ public class ConfigurationPanel extends JPanel {
 	}
 
 	public DollarsTextField startingBalanceField() {
-		final DollarsTextField field = new DollarsTextField(applicationModelCommand.startingBalance());
+		final DollarsTextField field = new DollarsTextField(applicationModelQuery.startingBalance());
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
 				applicationModelCommand.setStartingBalance(field.getDollars());
@@ -36,7 +38,7 @@ public class ConfigurationPanel extends JPanel {
 	}
 
 	private DollarsTextField costBasisField() {
-		final DollarsTextField field = new DollarsTextField(applicationModelCommand.startingCostBasis());
+		final DollarsTextField field = new DollarsTextField(applicationModelQuery.startingCostBasis());
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
 				applicationModelCommand.setStartingCostBasis(field.getDollars());
@@ -46,7 +48,7 @@ public class ConfigurationPanel extends JPanel {
 	}
 
 	private DollarsTextField yearlySpendingField() {
-		final DollarsTextField field = new DollarsTextField(applicationModelCommand.yearlySpending());
+		final DollarsTextField field = new DollarsTextField(applicationModelQuery.yearlySpending());
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
 				applicationModelCommand.setYearlySpending(field.getDollars());

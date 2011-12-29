@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class _ConfigurationPanelTest {
 
 	private ConfigurationPanel panel;
-	private ApplicationModelCommand modelCommand;
+	private ApplicationModelQuery modelQuery;
 
 	private DollarsTextField startingBalanceField() {
 		return (DollarsTextField)panel.getComponent(1);
@@ -29,7 +29,8 @@ public class _ConfigurationPanelTest {
 
 	@Before
 	public void setUp() {
-		modelCommand = new ApplicationModelCommand(new ApplicationModelQuery());
+		modelQuery = new ApplicationModelQuery();
+		ApplicationModelCommand modelCommand = new ApplicationModelCommand(modelQuery);
 		panel = new ConfigurationPanel(modelCommand);
 	}
 
@@ -56,9 +57,9 @@ public class _ConfigurationPanelTest {
 
 	@Test
 	public void fieldsInitializeToModelValue() {
-		assertEquals("starting balance field text", modelCommand.startingBalance(), startingBalanceField().getDollars());
-		assertEquals("cost basis field text", modelCommand.startingCostBasis(), costBasisField().getDollars());
-		assertEquals("yearly spending field text", modelCommand.yearlySpending(), yearlySpendingField().getDollars());
+		assertEquals("starting balance field text", modelQuery.startingBalance(), startingBalanceField().getDollars());
+		assertEquals("cost basis field text", modelQuery.startingCostBasis(), costBasisField().getDollars());
+		assertEquals("yearly spending field text", modelQuery.yearlySpending(), yearlySpendingField().getDollars());
 	}
 
 	@Test
