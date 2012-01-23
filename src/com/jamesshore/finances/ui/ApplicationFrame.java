@@ -1,9 +1,14 @@
 package com.jamesshore.finances.ui;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import com.jamesshore.finances.persistence.PersistenceCache;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.io.File;
 
 public class ApplicationFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -14,6 +19,16 @@ public class ApplicationFrame extends JFrame {
 
 	private ApplicationModel model;
 	private FileDialog saveAsDialog;
+
+	public static void newWindow(String fileName) {
+		try {
+			new ApplicationFrame(new ApplicationModel(PersistenceCache.load(new File(fileName)))).setVisible(true);
+		}
+		catch (Exception e) {
+			// show some error
+			throw new RuntimeException(e);
+		}
+	}
 
 	public static void newWindow() {
 		new ApplicationFrame(new ApplicationModel()).setVisible(true);

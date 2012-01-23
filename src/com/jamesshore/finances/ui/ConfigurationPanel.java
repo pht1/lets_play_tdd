@@ -1,8 +1,9 @@
 package com.jamesshore.finances.ui;
 
-import javax.swing.*;
-import net.miginfocom.swing.*;
 import com.jamesshore.finances.ui.DollarsTextField.ChangeListener;
+import net.miginfocom.swing.MigLayout;
+
+import javax.swing.*;
 
 public class ConfigurationPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +31,7 @@ public class ConfigurationPanel extends JPanel {
 		field.addTextChangeListener(new ChangeListener() {
 			public void textChanged() {
 				applicationModel.setStartingBalance(field.getDollars());
+				applicationModel.getPersistenceCache().setStartingBalance(field.getText());
 			}
 		});
 		return field;
